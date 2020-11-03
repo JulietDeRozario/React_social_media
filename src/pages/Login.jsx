@@ -22,6 +22,7 @@ const Login = () => {
 
   const createCookie = (token) => {
     Cookies.set('token', token);
+    window.location.href = "/";
   }
 
   return (

@@ -1,5 +1,6 @@
 import React from 'react';
 import Cookies from 'js-cookie'
+import { Redirect } from 'react-router-dom';
 
 const Signup =() => {
   const createAccount = () => {
@@ -17,12 +18,13 @@ const Signup =() => {
       body: JSON.stringify(data)
     })
     .then((response) => response.json())
-    .then((response) => createCookie(response.jwt))
+    .then((response) => createCookie(response))
     .catch((error) => console.error("lol: " + error))
   }
 
   const createCookie = (token) => {
     Cookies.set('token', token);
+    window.location.href = "/profile";
   }
 
   return (

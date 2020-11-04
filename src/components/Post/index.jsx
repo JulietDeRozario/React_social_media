@@ -1,7 +1,8 @@
 import React, {useState} from 'react';
 import Cookies from 'js-cookie';
 
-const Post = ({username, text, like, id}) => {
+
+const Post = ({username, text, like, userId, id}) => {
   const [nbLikes, setNbLikes] = useState(like);
   const [likeStatus, setLikeStatus] = useState(false);
 
@@ -27,18 +28,33 @@ const Post = ({username, text, like, id}) => {
       body: JSON.stringify(data)
     })
     .then((response) => response.json())
-    .then((data) => console.log(data))
     .catch((error) => console.error('lol: ' + error))
 
     setLikeStatus(!likeStatus);
   }
 
+  const deletePost = () => {
+    fetch(`https://my-pasteque-space.herokuapp.com/posts/${id}`, {
+      method: 'delete',
+      headers: {
+        'Authorization': `Bearer ${Cookies.get('token')}`, 
+        'Content-Type': 'application/json'
+      },
+    })
+    .then((response) => response.json())
+    .then((data) => window.location.reload())
+    .catch((error) => console.error('lol: ' + error))
+  }
+
   return (
     <div className="post-card">
-      <small>{username}</small>
+      <a onClick={() => localStorage.setItem('userId', userId)} href={`/users/${username}`}>{username}</a>
       <p>{text}</p>
       <p>likes: {nbLikes}</p>
       <button onClick={() => editPost()}>Like</button>
+      {userId === 7 &&
+        <button onClick={() => deletePost()}>Delete my post</button>
+      }
     </div>
   )
 }

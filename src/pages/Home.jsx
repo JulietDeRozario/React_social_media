@@ -6,15 +6,17 @@ const Home = () => {
   const [posts, setPosts] = useState([]);
 
   useEffect(() => {
-    fetch('https://my-pasteque-space.herokuapp.com/posts', {
-      method: 'get',
-      headers: {
-        'Authorization': `Bearer ${Cookies.get('token')}`, 
-        'Content-Type': 'application/json'
-      }
-    })
-    .then((response) => response.json())
-    .then((data) => setPosts(data)) 
+    if(Cookies.get('token')){
+      fetch('https://my-pasteque-space.herokuapp.com/posts', {
+        method: 'get',
+        headers: {
+          'Authorization': `Bearer ${Cookies.get('token')}`, 
+          'Content-Type': 'application/json'
+        }
+      })
+      .then((response) => response.json())
+      .then((data) => setPosts(data)) 
+    }
   }, [])
 
   const createPost = () => {
@@ -32,7 +34,7 @@ const Home = () => {
       body: JSON.stringify(data)
     })
     .then((response) => response.json())
-    .then((response) => console.log(response))
+    .then((response) => window.location.reload())
     .catch((error) => console.error("lol: " + error))
   }
 
@@ -48,12 +50,14 @@ const Home = () => {
       </form>
       }
       <section className="posts">
-        {posts.reverse().map((post) => (
+        {posts && 
+        posts.reverse().map((post) => (
           <Post
-          username={post.user.username}
-          text={post.text}
-          like={post.like}
-          id={post.id}
+            username={post.user.username}
+            text={post.text}
+            like={post.like}
+            userId={post.user.id}
+            id={post.id}
           />
         ))}
       </section>

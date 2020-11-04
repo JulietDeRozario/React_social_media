@@ -1,10 +1,11 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { BrowserRouter as Router, Route, Switch, Link, useParams, Redirect } from "react-router-dom";
 import Cookies from 'js-cookie';
 import Home from './pages/Home';
 import Login from './pages/Login';
 import Signup from './pages/Signup';
 import Profile from './pages/Profile';
+import AnotherProfile from './pages/AnotherProfile';
 
 
 const App = () => {
@@ -54,6 +55,9 @@ const App = () => {
             <Route exact path="/">
               <Home />
             </Route>
+            <Route path="/users/:username">
+              <AnotherProfile />
+            </Route>            
             <UnAuthRoute path="/login" component={Login} />
             <UnAuthRoute path="/register" component={Signup} />
             <AuthRoute path="/profile" component={Profile} />

@@ -9,6 +9,13 @@ const Profile = () => {
   const [id, setId] = useState('');
   const [posts, setPosts] = useState([]);
 
+  const loadInformations = (data) => {
+    setEmail(data.email);
+    setUsername(data.username);
+    setDescription(data.description);
+    setId(data.id);
+  }
+  
   useEffect(() => {
     fetch('https://my-pasteque-space.herokuapp.com/users/me', {
       method: 'get',
@@ -19,7 +26,11 @@ const Profile = () => {
     })
     .then((response) => response.json())
     .then((data) => loadInformations(data))
+  }, [])
 
+  useEffect(() => {
+    if(!id) return
+    
     fetch(`https://my-pasteque-space.herokuapp.com/posts?user.id=${id}`, {
       method: 'get',
       headers: {
@@ -30,14 +41,7 @@ const Profile = () => {
     .then((response) => response.json())
     .then((data) => setPosts(data))
     .catch((error) => console.error('lol: ' + error))
-  }, [])
-
-  const loadInformations = (data) => {
-    setEmail(data.email);
-    setUsername(data.username);
-    setDescription(data.description);
-    setId(data.id);
-  }
+  }, [id])
 
   const editProfile = () => {
     const data = {

@@ -1,7 +1,14 @@
 import React from 'react'; 
 import Cookies from 'js-cookie'
+import {useDispatch} from 'react-redux';
+import { addUserId, addUsername } from '../actions';
+import { useHistory } from "react-router-dom";
+
 
 const Login = () => {
+  const dispatch = useDispatch();
+  const history = useHistory();
+
   const login = () => {
     const data = {
       identifier: document.getElementById('identifier').value,
@@ -16,13 +23,17 @@ const Login = () => {
       body: JSON.stringify(data)
     })
     .then((response) => response.json())
-    .then((response) => createCookie(response.jwt))
+    .then((response) => {
+      dispatch(addUserId(response.user.id));
+      dispatch(addUsername(response.user.username));
+      createCookie(response.jwt);
+    })
     .catch((error) => console.error("lol: " + error))
   }
 
   const createCookie = (token) => {
     Cookies.set('token', token);
-    window.location.href = "/";
+    history.push("/");
   }
 
   return (

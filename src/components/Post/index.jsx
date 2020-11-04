@@ -1,10 +1,12 @@
 import React, {useState} from 'react';
 import Cookies from 'js-cookie';
+import {useSelector} from 'react-redux';
 
 
 const Post = ({username, text, like, userId, id}) => {
   const [nbLikes, setNbLikes] = useState(like);
   const [likeStatus, setLikeStatus] = useState(false);
+  const currentUserId = useSelector(state => state.userId);
 
   const editPost = () => {
     const data = {
@@ -52,7 +54,7 @@ const Post = ({username, text, like, userId, id}) => {
       <p>{text}</p>
       <p>likes: {nbLikes}</p>
       <button onClick={() => editPost()}>Like</button>
-      {userId === 7 &&
+      {userId.toString() === currentUserId &&
         <button onClick={() => deletePost()}>Delete my post</button>
       }
     </div>

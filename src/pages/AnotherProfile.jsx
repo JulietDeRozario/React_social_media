@@ -10,7 +10,6 @@ const AnotherProfile = () => {
   const [description, setDescription] = useState('');
   const [posts, setPosts] = useState([]);
 
-
   useEffect(() => {
     fetch(`https://my-pasteque-space.herokuapp.com/users/${id}`, {
       method: 'get',

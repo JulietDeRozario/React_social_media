@@ -1,9 +1,12 @@
 import React, {useEffect, useState} from 'react';
 import Cookies from 'js-cookie';
+import {useSelector} from 'react-redux';
 import Post from '../components/Post'
 
 const Home = () => {
   const [posts, setPosts] = useState([]);
+  const currentUserId = useSelector(state => state.userId);
+
 
   useEffect(() => {
     if(Cookies.get('token')){
@@ -20,9 +23,10 @@ const Home = () => {
   }, [])
 
   const createPost = () => {
+
     const data = {
       text: document.getElementById('post-content').value,
-      user: 7 
+      user: currentUserId
     };
     
     fetch('https://my-pasteque-space.herokuapp.com/posts', {

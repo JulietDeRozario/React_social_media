@@ -1,6 +1,13 @@
-export const register = (token) => {
+export const addUserId = (id) => {
   return {
-    type: 'REGISTER',
-    token: token
+    type: 'ADDID',
+    playload: id
+  }
+}
+
+export const addUsername = (username) => {
+  return {
+    type: 'ADDUSERNAME',
+    playload: username
   }
 }

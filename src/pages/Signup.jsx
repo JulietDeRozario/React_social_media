@@ -1,8 +1,16 @@
 import React from 'react';
 import Cookies from 'js-cookie'
 import { Redirect } from 'react-router-dom';
+import {useDispatch} from 'react-redux';
+import { addUserId, addUsername } from '../actions';
+import { useHistory } from "react-router-dom";
+
+
 
 const Signup =() => {
+  const dispatch = useDispatch();
+  const history = useHistory();
+
   const createAccount = () => {
     const data = {
       username: document.getElementById('username').value,
@@ -18,13 +26,17 @@ const Signup =() => {
       body: JSON.stringify(data)
     })
     .then((response) => response.json())
-    .then((response) => createCookie(response.jwt))
+    .then((response) => {
+      dispatch(addUserId(response.user.id));
+      dispatch(addUsername(response.user.username));
+      createCookie(response.jwt);
+    })
     .catch((error) => console.error("lol: " + error))
   }
 
   const createCookie = (token) => {
     Cookies.set('token', token);
-    window.location.href = "/profile";
+    history.push("/");
   }
 
   return (

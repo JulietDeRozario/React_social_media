@@ -1,12 +1,10 @@
-const token = (state = null, action) => {
-  switch(action.type) {
-    case 'REGISTER':
-      state = action.token;
-      return state;
-    default:
-      return state;
-  }
-  return state;
-}
+import userId from './userId';
+import username from './username';
+import {combineReducers} from 'redux';
 
-export default token;
+const reducers = combineReducers({
+  userId: userId,
+  username: username
+})
+
+export default reducers;

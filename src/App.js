@@ -7,7 +7,6 @@ import Signup from './pages/Signup';
 import Profile from './pages/Profile';
 import AnotherProfile from './pages/AnotherProfile';
 
-
 const App = () => {
   const checkAuth = () => {
     if(Cookies.get('token')){

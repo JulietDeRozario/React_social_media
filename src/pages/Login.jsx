@@ -8,7 +8,7 @@ const Login = () => {
       password: document.getElementById('password').value
     };
     
-    fetch('https://api-minireseausocial.mathis-dyk.fr/auth/local/', {
+    fetch('https://my-pasteque-space.herokuapp.com/auth/local', {
       method: 'post',
       headers: {
         'Content-Type': 'application/json'

@@ -10,7 +10,7 @@ const Signup =() => {
       password: document.getElementById('password').value
     };
     
-    fetch('https://api-minireseausocial.mathis-dyk.fr/auth/local/register', {
+    fetch('https://my-pasteque-space.herokuapp.com/auth/local/register', {
       method: 'post',
       headers: {
         'Content-Type': 'application/json'
@@ -18,7 +18,7 @@ const Signup =() => {
       body: JSON.stringify(data)
     })
     .then((response) => response.json())
-    .then((response) => createCookie(response))
+    .then((response) => createCookie(response.jwt))
     .catch((error) => console.error("lol: " + error))
   }
 

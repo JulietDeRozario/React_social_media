@@ -14,7 +14,6 @@ const Profile = () => {
   const dispatch = useDispatch();
 
   const loadInformations = (data) => {
-    console.log(data.id);
     setEmail(data.email);
     setUsername(data.username);
     setDescription(data.description);
@@ -23,7 +22,6 @@ const Profile = () => {
   }
 
   const getInformations = () => {
-    console.log("coucou");
     fetch('https://my-pasteque-space.herokuapp.com/users/me', {
       method: 'get',
       headers: {
@@ -39,10 +37,7 @@ const Profile = () => {
     getInformations();
   }, [])
 
-  useEffect(() => {
-    console.log("coucouu")
-    if(!id) return
-    
+  const loadPosts = () => {
     fetch(`https://my-pasteque-space.herokuapp.com/posts?user.id=${id}`, {
       method: 'get',
       headers: {
@@ -53,6 +48,11 @@ const Profile = () => {
     .then((response) => response.json())
     .then((data) => setPosts(data))
     .catch((error) => console.error('lol: ' + error))
+  }
+
+  useEffect(() => {
+    if(!id) return
+    loadPosts() 
   }, [id])
 
   const editProfile = () => {
@@ -114,7 +114,7 @@ const Profile = () => {
                 like={post.like}
                 userId={post.user.id}
                 id={post.id}
-                reloadPosts={getInformations}
+                reloadPosts={loadPosts}
               />
             ))
           }

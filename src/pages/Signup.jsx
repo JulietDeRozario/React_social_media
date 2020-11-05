@@ -27,7 +27,6 @@ const Signup =() => {
     })
     .then((response) => response.json())
     .then((response) => {
-      console.log(response);
       dispatch(addUserId(response.user.id));
       dispatch(addUsername(response.user.username));
       createCookie(response.jwt);

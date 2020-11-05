@@ -1,7 +1,8 @@
 import React, {useEffect, useState} from 'react';
 import Cookies from 'js-cookie';
 import {useSelector} from 'react-redux';
-import Post from '../components/Post'
+import Post from '../components/Post';
+import {Link} from 'react-router-dom';
 
 const Home = () => {
   const [posts, setPosts] = useState([]);
@@ -43,6 +44,7 @@ const Home = () => {
     .then((response) => response.json())
     .then(() => {getPosts()})
     .catch((error) => console.error("lol: " + error))
+
   }
 
   return (
@@ -50,6 +52,17 @@ const Home = () => {
       <div className='main-text'>
         <h1>My Social Network</h1>
         <p>Welcome on My Social Network. This website is a training to Redux and React. We use auth and routing to create a small social media website.</p>
+        {!currentUserId &&
+          <div>
+            <p>
+              You're disconnected,
+              <Link to='/login'>log in</Link> to see the new posts !<br/>
+              <small>
+                No account yet? <Link to='/register'>sign up</Link> and join the comunity.
+              </small>
+            </p>
+          </div>
+        }
       </div>
       {
       Cookies.get('token') &&

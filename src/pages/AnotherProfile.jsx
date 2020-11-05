@@ -7,7 +7,7 @@ const AnotherProfile = () => {
   const [id, setId] = useState(localStorage.getItem('userId'));
   const [email, setEmail] = useState('');
   const [username, setUsername] = useState('');
-  const [description, setDescription] = useState('');
+  const [description, setDescription] = useState('No description');
   const [posts, setPosts] = useState([]);
 
   useEffect(() => {
@@ -42,24 +42,30 @@ const AnotherProfile = () => {
   return (
     <div className="profile-page">
       <h1>Profile page</h1>
-      <h2>email: {email}</h2>
-      <h2>username: {username}</h2>
-      <h2>description:</h2>
-      <p>{description}</p>
-      <h1>Posts</h1>
-      <section className="posts">
-        {posts &&
-          posts.reverse().map(post => (
-            <Post
-              username={post.user.username}
-              text={post.text}
-              like={post.like}
-              userId={post.user.id}
-              id={post.id}
-            />
-          ))
-        }
-      </section>
+      <div className="main-infos">
+        <h2>email: {email}</h2>
+        <h2>username: {username}</h2>
+      </div>
+      <div className="description" >
+        <h2>description:</h2>
+        <p>{description}</p>
+      </div>
+      <div className="display-posts">
+        <h1>Posts</h1>
+        <section className="posts">
+          {posts &&
+            posts.reverse().map(post => (
+              <Post
+                username={post.user.username}
+                text={post.text}
+                like={post.like}
+                userId={post.user.id}
+                id={post.id}
+              />
+            ))
+          }
+        </section>
+      </div>
     </ div>
   )
 }

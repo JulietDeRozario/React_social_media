@@ -177,9 +177,17 @@ html {
   width: 500px;
 
   textarea {
+    border: none;
+    padding: 8px;
     background-color: #131d27;
     color: $home_text_color;
     border-radius: 2px;
+    transition: all 200ms 100ms ease-out;
+
+    &:focus {
+      transform: scale(1.05);
+      border: 1px solid $nav_link_color;
+    }
   }
 
   button {
@@ -212,11 +220,13 @@ html {
 
   p {
     margin: auto;
+    margin-bottom: 60px;
     width: 400px;
     letter-spacing: 1.5px;
     color: $nav_link_color;
     font-size: 16px;
   }
+
 }
 
 .profile-page {
@@ -287,9 +297,16 @@ html {
       margin-left: 20px;
       margin-right: 20px;
       margin-top: 10px;
+      padding: 8px;
+      border-color: #131d27;
       border-radius: 3px;
       background-color: #131d27;
       color: $home_text_color;
+      transition: all 200ms 100ms ease-out;
+
+      &:focus {
+        border: 1px solid $nav_link_color;
+      }
     }
 
     textarea {
@@ -297,8 +314,15 @@ html {
       margin-right: 20px;
       margin-top: 10px;
       border-radius: 3px;
+      border: none;
+      border-radius: 3px;
       background-color: #131d27;
       color: $home_text_color;
+      transition: all 200ms 100ms ease-out;
+
+      &:focus {
+        border: 1px solid $nav_link_color;
+      }
     }
 
     button {
@@ -337,7 +361,7 @@ html {
     margin: auto;
     margin-bottom: 15px;
     transition: all 200ms 100ms ease-out;
-    padding: 5px;
+    padding: 8px;
 
     &:focus {
       border: 1px solid $nav_link_color;

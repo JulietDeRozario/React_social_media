@@ -147,9 +147,16 @@ html body .main .posts .post-card:hover {
   width: 500px;
 }
 .create-post textarea {
+  border: none;
+  padding: 8px;
   background-color: #131d27;
   color: #fdfdfd;
   border-radius: 2px;
+  transition: all 200ms 100ms ease-out;
+}
+.create-post textarea:focus {
+  transform: scale(1.05);
+  border: 1px solid #cfcfcf;
 }
 .create-post button {
   cursor: pointer;
@@ -178,6 +185,7 @@ html body .main .posts .post-card:hover {
 }
 .main-text p {
   margin: auto;
+  margin-bottom: 60px;
   width: 400px;
   letter-spacing: 1.5px;
   color: #cfcfcf;
@@ -245,17 +253,29 @@ html body .main .posts .post-card:hover {
   margin-left: 20px;
   margin-right: 20px;
   margin-top: 10px;
+  padding: 8px;
+  border-color: #131d27;
   border-radius: 3px;
   background-color: #131d27;
   color: #fdfdfd;
+  transition: all 200ms 100ms ease-out;
+}
+.profile-page .edit-profile-form input:focus {
+  border: 1px solid #cfcfcf;
 }
 .profile-page .edit-profile-form textarea {
   margin-left: 20px;
   margin-right: 20px;
   margin-top: 10px;
   border-radius: 3px;
+  border: none;
+  border-radius: 3px;
   background-color: #131d27;
   color: #fdfdfd;
+  transition: all 200ms 100ms ease-out;
+}
+.profile-page .edit-profile-form textarea:focus {
+  border: 1px solid #cfcfcf;
 }
 .profile-page .edit-profile-form button {
   cursor: pointer;
@@ -290,7 +310,7 @@ html body .main .posts .post-card:hover {
   margin: auto;
   margin-bottom: 15px;
   transition: all 200ms 100ms ease-out;
-  padding: 5px;
+  padding: 8px;
 }
 .register-form input:focus {
   border: 1px solid #cfcfcf;

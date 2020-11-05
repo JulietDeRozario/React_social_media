@@ -27,6 +27,7 @@ const Signup =() => {
     })
     .then((response) => response.json())
     .then((response) => {
+      console.log(response);
       dispatch(addUserId(response.user.id));
       dispatch(addUsername(response.user.username));
       createCookie(response.jwt);
@@ -40,7 +41,7 @@ const Signup =() => {
   }
 
   return (
-    <form onSubmit={(e) => {
+    <form className="register-form" onSubmit={(e) => {
       e.preventDefault(); 
       createAccount()
     }}>

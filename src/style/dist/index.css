@@ -24,6 +24,41 @@ html body .main nav .nav-link:hover {
   transform: scale(1.2);
   color: #fdfdfd;
 }
+html body .main nav .signin-btn {
+  text-decoration: none;
+  text-align: center;
+  cursor: pointer;
+  border: 1px solid #cfcfcf;
+  border-radius: 20px;
+  background-color: transparent;
+  color: #cfcfcf;
+  width: 100px;
+  padding: 5px;
+  transition: all 200ms 100ms ease-in;
+}
+html body .main nav .signin-btn:hover {
+  background-color: #6b9dac;
+  border-color: #6b9dac;
+  filter: contrast(1.2);
+  color: #fdfdfd;
+}
+html body .main nav .signup-btn {
+  text-decoration: none;
+  text-align: center;
+  cursor: pointer;
+  border: none;
+  border-radius: 20px;
+  background-color: #196ad4;
+  color: #cfcfcf;
+  width: 100px;
+  padding: 5px;
+  transition: all 200ms 100ms ease-in;
+}
+html body .main nav .signup-btn:hover {
+  transform: scale(1.05);
+  filter: contrast(1.2);
+  color: #fdfdfd;
+}
 html body .main nav .log-out-btn {
   cursor: pointer;
   border: none;
@@ -76,7 +111,7 @@ html body .main .posts .post-card .delete-btn {
   margin: 8px;
   padding: 3px;
   cursor: pointer;
-  background-color: #8d9ba8;
+  background-color: #e61d1d;
   color: #fdfdfd;
   border-radius: 50%;
   padding: 5px;
@@ -91,10 +126,15 @@ html body .main .posts .post-card .profile-link {
   text-decoration: none;
   color: #fdfdfd;
   margin: auto;
+  transition: color 100ms 100ms;
+}
+html body .main .posts .post-card .profile-link:hover {
+  color: #cfcfcf;
 }
 html body .main .posts .post-card p {
   font-size: 14px;
   color: #cfcfcf;
+  margin-bottom: 30px;
 }
 html body .main .posts .post-card:hover {
   transform: translateY(-5px);
@@ -118,6 +158,7 @@ html body .main .posts .post-card:hover {
   width: 100px;
   padding: 5px;
   border: none;
+  border-radius: 3px;
   background-color: #073da0;
   color: #cfcfcf;
   transition: all 200ms 200ms ease-in;
@@ -125,4 +166,151 @@ html body .main .posts .post-card:hover {
 .create-post button:hover {
   filter: contrast(1.2);
   color: #fdfdfd;
+}
+
+.main-text {
+  margin-top: 50px;
+  margin-bottom: 50px;
+  text-align: center;
+}
+.main-text h1 {
+  font-size: 35px;
+}
+.main-text p {
+  margin: auto;
+  width: 400px;
+  letter-spacing: 1.5px;
+  color: #cfcfcf;
+  font-size: 16px;
+}
+
+.profile-page {
+  box-shadow: 1em 1em 2em black;
+  border-radius: 10%;
+  margin: 100px;
+  margin-top: 80px;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+.profile-page .main-infos {
+  display: flex;
+  margin: auto;
+  box-shadow: 1em 1em 2em rgba(0, 0, 0, 0.2);
+  padding: 10px;
+  border-radius: 20px;
+  margin-bottom: 30px;
+}
+.profile-page .main-infos h2 {
+  margin: 30px;
+  font-size: 20px;
+}
+.profile-page .description {
+  box-shadow: 1em 1em 2em rgba(0, 0, 0, 0.2);
+  padding: 10px;
+  border-radius: 20px;
+  text-align: center;
+  margin-left: 300px;
+  margin-right: 300px;
+  margin-bottom: 40px;
+}
+.profile-page .description h2 {
+  margin-top: -2px;
+}
+.profile-page .description p {
+  color: #cfcfcf;
+}
+.profile-page .display-posts {
+  box-shadow: 1em 1em 2em rgba(0, 0, 0, 0.2);
+  padding: 5px;
+  border-radius: 20px;
+  margin: 80px;
+  margin-left: 250px;
+  margin-right: 250px;
+}
+.profile-page .display-posts h2 {
+  margin-top: -2px;
+}
+.profile-page .edit-profile-form {
+  box-shadow: 1em 1em 2em rgba(0, 0, 0, 0.2);
+  padding: 5px;
+  border-radius: 20px;
+  margin-top: 80px;
+  display: flex;
+  flex-direction: column;
+  width: 400px;
+  margin: auto;
+}
+.profile-page .edit-profile-form input {
+  margin-left: 20px;
+  margin-right: 20px;
+  margin-top: 10px;
+  border-radius: 3px;
+  background-color: #131d27;
+  color: #fdfdfd;
+}
+.profile-page .edit-profile-form textarea {
+  margin-left: 20px;
+  margin-right: 20px;
+  margin-top: 10px;
+  border-radius: 3px;
+  background-color: #131d27;
+  color: #fdfdfd;
+}
+.profile-page .edit-profile-form button {
+  cursor: pointer;
+  border: none;
+  background-color: #0d2194;
+  color: #cfcfcf;
+  transition: all 200ms 200ms ease-in;
+  width: 200px;
+  padding: 5px;
+  margin: auto;
+  margin-top: 10px;
+  border-radius: 5%;
+  margin-bottom: 10px;
+}
+.profile-page .edit-profile-form button:hover {
+  filter: contrast(1.2);
+  color: #fdfdfd;
+}
+
+.register-form {
+  margin-top: 80px;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+.register-form input {
+  border: none;
+  border-radius: 3px;
+  background-color: #131d27;
+  color: #fdfdfd;
+  width: 400px;
+  margin: auto;
+  margin-bottom: 15px;
+  transition: all 200ms 100ms ease-out;
+  padding: 5px;
+}
+.register-form input:focus {
+  border: 1px solid #cfcfcf;
+  transform: scale(1.05);
+}
+.register-form button {
+  cursor: pointer;
+  width: 100px;
+  padding: 5px;
+  margin: auto;
+  margin-top: 10px;
+  border: 1px solid #cfcfcf;
+  border-radius: 20px;
+  color: #cfcfcf;
+  background-color: transparent;
+  transition: all 200ms 100ms ease-in;
+}
+.register-form button:hover {
+  transform: scale(1.05);
+  color: #fdfdfd;
+  background-color: #196ad4;
+  border-color: #196ad4;
 }

@@ -69,8 +69,8 @@ const Post = ({username, text, like, userId, id, reloadPosts}) => {
         </button>
       }
       
-      {userId.toString() === currentUserId &&
-        <button className="delete-btn" onClick={() => deletePost()}>
+      {userId && (userId === currentUserId) &&
+        <button className="delete-btn" title="delete post" onClick={() => deletePost()}>
           <i className="fas fa-trash" />
         </button>
       }

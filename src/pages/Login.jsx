@@ -37,7 +37,7 @@ const Login = () => {
   }
 
   return (
-    <form onSubmit={(e) => {
+    <form className="register-form" onSubmit={(e) => {
       e.preventDefault();
       login();
     }}>

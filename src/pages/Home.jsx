@@ -41,14 +41,16 @@ const Home = () => {
       body: JSON.stringify(data)
     })
     .then((response) => response.json())
-    .then(() => getPosts())
+    .then(() => {getPosts()})
     .catch((error) => console.error("lol: " + error))
   }
 
   return (
     <div className='home-txt'>
-      <h1>Home sweet home</h1>
-      <p>Welcome on My Social Network. This website is a training to Redux and React. We use auth and routing to create a small social media website.</p>
+      <div className='main-text'>
+        <h1>My Social Network</h1>
+        <p>Welcome on My Social Network. This website is a training to Redux and React. We use auth and routing to create a small social media website.</p>
+      </div>
       {
       Cookies.get('token') &&
       <form className="create-post" onSubmit={(e) => {e.preventDefault(); createPost()}}>

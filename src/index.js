@@ -1,11 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import './style/dist/index.css';
 import App from './App';
 import { createStore }from 'redux';
 import reducers from './reducers';
 import  {Provider} from 'react-redux';
-// TODO: add redux to store the user id
-// TODO: find a way to get posts without authentification
 // TODO: mettre tout au propre dans des components
 // TODO: utiliser les Link to de Paul
 

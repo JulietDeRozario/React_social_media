@@ -47,17 +47,19 @@ const AnotherProfile = () => {
       <h2>description:</h2>
       <p>{description}</p>
       <h1>Posts</h1>
-      {posts &&
-        posts.reverse().map(post => (
-          <Post
-            username={post.user.username}
-            text={post.text}
-            like={post.like}
-            userId={post.user.id}
-            id={post.id}
-          />
-        ))
-      }
+      <section className="posts">
+        {posts &&
+          posts.reverse().map(post => (
+            <Post
+              username={post.user.username}
+              text={post.text}
+              like={post.like}
+              userId={post.user.id}
+              id={post.id}
+            />
+          ))
+        }
+      </section>
     </ div>
   )
 }

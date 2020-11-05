@@ -7,8 +7,7 @@ const Home = () => {
   const [posts, setPosts] = useState([]);
   const currentUserId = useSelector(state => state.userId);
 
-
-  useEffect(() => {
+  const getPosts = () => {
     if(Cookies.get('token')){
       fetch('https://my-pasteque-space.herokuapp.com/posts', {
         method: 'get',
@@ -19,11 +18,15 @@ const Home = () => {
       })
       .then((response) => response.json())
       .then((data) => setPosts(data)) 
+      .catch((error) => console.error("lol: " + error))
     }
+  }
+
+  useEffect(() => {
+    getPosts();
   }, [])
 
   const createPost = () => {
-
     const data = {
       text: document.getElementById('post-content').value,
       user: currentUserId
@@ -38,7 +41,7 @@ const Home = () => {
       body: JSON.stringify(data)
     })
     .then((response) => response.json())
-    .then((response) => window.location.reload())
+    .then(() => getPosts())
     .catch((error) => console.error("lol: " + error))
   }
 
@@ -62,6 +65,7 @@ const Home = () => {
             like={post.like}
             userId={post.user.id}
             id={post.id}
+            reloadPosts = {getPosts}
           />
         ))}
       </section>

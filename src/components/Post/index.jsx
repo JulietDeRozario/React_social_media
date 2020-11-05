@@ -1,9 +1,10 @@
 import React, {useState} from 'react';
 import Cookies from 'js-cookie';
 import {useSelector} from 'react-redux';
+import {Link} from 'react-router-dom';
 
 
-const Post = ({username, text, like, userId, id}) => {
+const Post = ({username, text, like, userId, id, reloadPosts}) => {
   const [nbLikes, setNbLikes] = useState(like);
   const [likeStatus, setLikeStatus] = useState(false);
   const currentUserId = useSelector(state => state.userId);
@@ -44,18 +45,34 @@ const Post = ({username, text, like, userId, id}) => {
       },
     })
     .then((response) => response.json())
-    .then((data) => window.location.reload())
+    .then(() => reloadPosts())
     .catch((error) => console.error('lol: ' + error))
   }
 
   return (
     <div className="post-card">
-      <a onClick={() => localStorage.setItem('userId', userId)} href={`/users/${username}`}>{username}</a>
+      <Link className="profile-link" onClick={() => localStorage.setItem('userId', userId)} to={`/users/${username}`}>
+        <i className="fa fa-user" aria-hidden="true"/>
+        {"  " + username}
+      </Link>
       <p>{text}</p>
-      <p>likes: {nbLikes}</p>
-      <button onClick={() => editPost()}>Like</button>
+      <hr/>
+      <small>likes: {nbLikes}</small><br />
+      {!likeStatus &&
+        <button className="like-btn" onClick={() => editPost()}>
+          <i className="far fa-heart" aria-hidden="true"/>
+        </button>
+      }
+      {likeStatus &&
+        <button className="like-btn" onClick={() => editPost()}>
+          <i className="fas fa-heart" aria-hidden="true"/>
+        </button>
+      }
+      
       {userId.toString() === currentUserId &&
-        <button onClick={() => deletePost()}>Delete my post</button>
+        <button className="delete-btn" onClick={() => deletePost()}>
+          <i className="fas fa-trash" />
+        </button>
       }
     </div>
   )

@@ -85,17 +85,19 @@ const Profile = () => {
       <textarea id="description" placeholder="Update description" />
       <button onClick={()=> editProfile()}>Edit informations</button>
       <h1>My posts</h1>
-      {posts &&
-        posts.reverse().map(post => (
-          <Post
-            username={post.user.username}
-            text={post.text}
-            like={post.like}
-            userId={post.user.id}
-            id={post.id}
-          />
-        ))
-      }
+      <section className="posts">
+        {posts &&
+          posts.reverse().map(post => (
+            <Post
+              username={post.user.username}
+              text={post.text}
+              like={post.like}
+              userId={post.user.id}
+              id={post.id}
+            />
+          ))
+        }
+      </section>
     </ div>
   )
 }
